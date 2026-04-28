@@ -7,7 +7,7 @@
     </div>
 
     <!-- Stats Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
         <div class="bg-surface-container-lowest p-6 rounded-3xl border border-outline-variant/30 shadow-sm">
             <div class="text-[10px] font-black uppercase tracking-widest text-secondary mb-1">Total Pelanggan</div>
             <div class="text-3xl font-black text-on-surface">{{ number_format($stats['total_customers']) }}</div>

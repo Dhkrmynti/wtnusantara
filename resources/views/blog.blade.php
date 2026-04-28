@@ -25,7 +25,7 @@
     </header>
 
     <!-- Blog Grid -->
-    <section class="py-20 px-5 lg:px-[5%]">
+    <section class="py-12 px-5 lg:px-[5%]">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 @for ($i = 1; $i <= 9; $i++)

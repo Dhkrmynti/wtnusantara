@@ -1,16 +1,16 @@
-<header class="sticky top-0 z-40 w-full flex items-center justify-between px-6 h-14 bg-surface-container-lowest border-b border-outline-variant shadow-sm transition-colors duration-300">
-    <div class="flex items-center flex-1 gap-4">
-        <button @click="sidebarOpen = !sidebarOpen" class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
-            <svg class="w-5 h-5 transition-transform duration-300" :class="sidebarOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<header class="sticky top-0 z-40 w-full flex items-center justify-between px-4 md:px-6 h-14 bg-surface-container-lowest border-b border-outline-variant shadow-sm transition-colors duration-300">
+    <div class="flex items-center flex-1 gap-2 md:gap-4">
+        <button @click="sidebarOpen = !sidebarOpen" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+            <svg class="w-6 h-6 transition-transform duration-300" :class="sidebarOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" x-show="!sidebarOpen"></path>
                 <path d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" x-show="sidebarOpen"></path>
             </svg>
         </button>
-        <div class="relative w-full max-w-md gap-0">
+        <div class="relative w-full max-w-md hidden sm:block">
             <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
-            <input class="w-full pl-10 pr-4 py-1.5 bg-surface-container-high border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/20 transition-all text-on-surface placeholder:text-secondary/50" placeholder="Search data, reports, or users..." type="text"/>
+            <input class="w-full pl-10 pr-4 py-1.5 bg-surface-container-high border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/20 transition-all text-on-surface placeholder:text-secondary/50" placeholder="Search..." type="text"/>
         </div>
     </div>
     <div class="flex items-center gap-4">

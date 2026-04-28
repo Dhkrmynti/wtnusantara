@@ -57,8 +57,8 @@
         @endif
 
         <!-- Table Card -->
-        <div class="bg-surface border border-outline-variant/30 rounded-2xl overflow-visible shadow-sm p-4">
-            <div class="overflow-visible">
+        <div class="bg-surface border border-outline-variant/30 rounded-2xl overflow-hidden shadow-sm p-4">
+            <div class="overflow-x-auto">
                 <table id="customers-table" class="w-full text-left border-collapse">
                     <thead>
                         <tr class="bg-surface-container-low/50">
@@ -119,7 +119,7 @@
                                 <input type="hidden" name="_method" value="PUT">
                             </template>
 
-                            <div class="grid grid-cols-2 gap-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="col-span-1">
                                     <label class="block text-[10px] font-black text-secondary uppercase tracking-widest mb-2">Kode Pelanggan</label>
                                     <input type="text" name="customer_code" x-model="customer.customer_code" required readonly class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-medium">
@@ -135,7 +135,7 @@
                                 <input type="text" name="full_name" x-model="customer.full_name" required class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-medium">
                             </div>
 
-                            <div class="grid grid-cols-2 gap-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-[10px] font-black text-secondary uppercase tracking-widest mb-2">No. WhatsApp</label>
                                     <input type="text" name="whatsapp_number" x-model="customer.whatsapp_number" required placeholder="08123456789" class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-medium">
@@ -146,7 +146,7 @@
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-[10px] font-black text-secondary uppercase tracking-widest mb-2">Paket Internet</label>
                                     <select name="package_id" x-model="customer.package_id" required class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-medium">
@@ -167,7 +167,7 @@
                                 <textarea name="address" x-model="customer.address" required rows="3" class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-medium resize-none"></textarea>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-[10px] font-black text-secondary uppercase tracking-widest mb-2">Aktif Sejak</label>
                                     <input type="date" name="active_since" x-model="customer.active_since" required class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-medium">

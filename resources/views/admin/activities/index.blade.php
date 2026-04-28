@@ -44,8 +44,8 @@
         @endif
 
         <!-- Table Card -->
-        <div class="bg-surface border border-outline-variant/30 rounded-2xl overflow-visible shadow-sm p-4">
-            <div class="overflow-visible">
+        <div class="bg-surface border border-outline-variant/30 rounded-2xl overflow-hidden shadow-sm p-4">
+            <div class="overflow-x-auto">
                 <table id="activities-table" class="w-full text-left border-collapse">
                     <thead>
                         <tr class="bg-surface-container-low/50">

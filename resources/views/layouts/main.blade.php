@@ -7,10 +7,13 @@
 
     <title>@yield('title', 'WTNusantara | Era Baru Konektivitas Digital')</title>
 
-    <!-- Google Fonts: Outfit & Inter -->
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    
+    <!-- Google Fonts: Outfit & Inter (Optimized weights) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -31,17 +34,19 @@
 <body class="font-secondary antialiased bg-white text-[var(--text-dark)] overflow-x-hidden m-0" style="font-family: 'Inter', sans-serif;">
 
     <!-- Header -->
-    <nav class="fixed top-0 left-0 w-full h-[90px] flex items-center justify-between px-5 lg:px-[5%] z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100">
+    <nav class="fixed top-0 left-0 w-full md:h-[90px] h-[70px] flex items-center justify-between px-5 lg:px-[5%] z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div class="flex items-center gap-3">
             <a href="/"><img src="{{ asset('wtnusantara-logo.png') }}" alt="WTNusantara Logo" class="h-10 w-auto" loading="lazy"></a>
         </div>
         
         <div class="hidden lg:flex gap-12 items-center">
-            <a href="/" class="font-primary text-sm font-bold text-slate-700 hover:text-[var(--primary)] transition-colors">Home</a>
-            <a href="/produk" class="font-primary text-sm font-bold text-slate-700 hover:text-[var(--primary)] transition-colors">Packages</a>
+            <a href="/" class="font-primary text-sm font-bold {{ Request::is('/') ? 'text-[var(--primary)]' : 'text-slate-700' }} hover:text-[var(--primary)] transition-colors">Home</a>
+            <a href="/produk" class="font-primary text-sm font-bold {{ Request::is('produk') ? 'text-[var(--primary)]' : 'text-slate-700' }} hover:text-[var(--primary)] transition-colors">Packages</a>
             <a href="/#peta-jangkauan" class="font-primary text-sm font-bold text-slate-700 hover:text-[var(--primary)] transition-colors">Services</a>
-            <a href="/blog" class="font-primary text-sm font-bold text-slate-700 hover:text-[var(--primary)] transition-colors">Pages</a>
-            <a href="/#medsos" class="font-primary text-sm font-bold text-slate-700 hover:text-[var(--primary)] transition-colors">Contact us</a>
+            <a href="/speed-test" class="font-primary text-sm font-bold {{ Request::is('speed-test') ? 'text-[var(--primary)]' : 'text-slate-700' }} hover:text-[var(--primary)] transition-colors">Speed Test</a>
+            <a href="/aktivitas" class="font-primary text-sm font-bold {{ Request::is('aktivitas') ? 'text-[var(--primary)]' : 'text-slate-700' }} hover:text-[var(--primary)] transition-colors">Aktivitas</a>
+            <a href="/blog" class="font-primary text-sm font-bold {{ Request::is('blog') ? 'text-[var(--primary)]' : 'text-slate-700' }} hover:text-[var(--primary)] transition-colors">Blog</a>
+            <a href="/#sosmed" class="font-primary text-sm font-bold text-slate-700 hover:text-[var(--primary)] transition-colors">Contact us</a>
             
             <a href="/#cta" class="ml-4 font-primary bg-blue-600 text-white px-10 py-4 rounded-xl text-sm font-black transition-all hover:bg-blue-700 hover:-translate-y-0.5 shadow-lg shadow-blue-100" style="font-family: 'Outfit', sans-serif;">Get Started</a>
         </div>
@@ -61,14 +66,16 @@
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
-            <nav class="flex flex-col gap-8">
-                <a href="/produk" class="mobile-nav-link font-primary text-2xl font-bold {{ Request::is('produk') ? 'text-[var(--primary)]' : 'text-[var(--text-dark)]' }} hover:text-[var(--primary)] transition-colors" style="font-family: 'Outfit', sans-serif;">Produk</a>
-                <a href="/#peta-jangkauan" class="mobile-nav-link font-primary text-2xl font-bold text-[var(--text-dark)] hover:text-[var(--primary)] transition-colors" style="font-family: 'Outfit', sans-serif;">Jaringan</a>
-                <a href="/speed-test" class="mobile-nav-link font-primary text-2xl font-bold {{ Request::is('speed-test') ? 'text-[var(--primary)]' : 'text-[var(--text-dark)]' }} hover:text-[var(--primary)] transition-colors" style="font-family: 'Outfit', sans-serif;">Speed Test</a>
-                <a href="/#blog" class="mobile-nav-link font-primary text-2xl font-bold text-[var(--text-dark)] hover:text-[var(--primary)] transition-colors" style="font-family: 'Outfit', sans-serif;">Blog</a>
-                <a href="/#medsos" class="mobile-nav-link font-primary text-2xl font-bold text-[var(--text-dark)] hover:text-[var(--primary)] transition-colors" style="font-family: 'Outfit', sans-serif;">Kontak</a>
+            <nav class="flex flex-col gap-6">
+                <a href="/" class="mobile-nav-link font-primary text-xl font-bold {{ Request::is('/') ? 'text-[var(--primary)]' : 'text-[var(--text-dark)]' }} hover:text-[var(--primary)] transition-colors" style="font-family: 'Outfit', sans-serif;">Beranda</a>
+                <a href="/produk" class="mobile-nav-link font-primary text-xl font-bold {{ Request::is('produk') ? 'text-[var(--primary)]' : 'text-[var(--text-dark)]' }} hover:text-[var(--primary)] transition-colors" style="font-family: 'Outfit', sans-serif;">Produk</a>
+                <a href="/#peta-jangkauan" class="mobile-nav-link font-primary text-xl font-bold text-[var(--text-dark)] hover:text-[var(--primary)] transition-colors" style="font-family: 'Outfit', sans-serif;">Jaringan</a>
+                <a href="/speed-test" class="mobile-nav-link font-primary text-xl font-bold {{ Request::is('speed-test') ? 'text-[var(--primary)]' : 'text-[var(--text-dark)]' }} hover:text-[var(--primary)] transition-colors" style="font-family: 'Outfit', sans-serif;">Speed Test</a>
+                <a href="/aktivitas" class="mobile-nav-link font-primary text-xl font-bold {{ Request::is('aktivitas') ? 'text-[var(--primary)]' : 'text-[var(--text-dark)]' }} hover:text-[var(--primary)] transition-colors" style="font-family: 'Outfit', sans-serif;">Aktivitas</a>
+                <a href="/blog" class="mobile-nav-link font-primary text-xl font-bold {{ Request::is('blog') ? 'text-[var(--primary)]' : 'text-[var(--text-dark)]' }} hover:text-[var(--primary)] transition-colors" style="font-family: 'Outfit', sans-serif;">Blog</a>
+                <a href="/#sosmed" class="mobile-nav-link font-primary text-xl font-bold text-[var(--text-dark)] hover:text-[var(--primary)] transition-colors" style="font-family: 'Outfit', sans-serif;">Kontak</a>
                 
-                <a href="/#cta" class="mobile-nav-link mt-12 bg-[var(--primary)] text-white px-10 py-5 rounded-3xl text-center text-sm font-bold uppercase tracking-widest hover:bg-sky-600 transition-all font-primary" style="font-family: 'Outfit', sans-serif;">Hubungi Kami</a>
+                <a href="/#cta" class="mobile-nav-link mt-8 bg-[var(--primary)] text-white px-10 py-4 rounded-2xl text-center text-sm font-bold uppercase tracking-widest hover:bg-sky-600 transition-all font-primary" style="font-family: 'Outfit', sans-serif;">Hubungi Kami</a>
             </nav>
         </div>
     </div>
@@ -117,10 +124,10 @@
                 <div>
                     <h4 class="font-primary font-bold text-[var(--text-dark)] mb-6 uppercase tracking-widest text-xs" style="font-family: 'Outfit', sans-serif;">Perusahaan</h4>
                     <ul class="space-y-4">
-                        <li><a href="/#mengapa-kami" class="text-[var(--secondary)] text-sm hover:text-[var(--primary)] transition-colors">Tentang Kami</a></li>
-                        <li><a href="/#peta-jangkauan" class="text-[var(--secondary)] text-sm hover:text-[var(--primary)] transition-colors">Visi & Misi</a></li>
+                        <li><a href="/#why-choose-us" class="text-[var(--secondary)] text-sm hover:text-[var(--primary)] transition-colors">Tentang Kami</a></li>
+                        <li><a href="/aktivitas" class="text-[var(--secondary)] text-sm hover:text-[var(--primary)] transition-colors">Aktivitas</a></li>
                         <li><a href="#" class="text-[var(--secondary)] text-sm hover:text-[var(--primary)] transition-colors">Karir</a></li>
-                        <li><a href="/#blog" class="text-[var(--secondary)] text-sm hover:text-[var(--primary)] transition-colors">Beritas</a></li>
+                        <li><a href="/blog" class="text-[var(--secondary)] text-sm hover:text-[var(--primary)] transition-colors">Berita</a></li>
                     </ul>
                 </div>
 

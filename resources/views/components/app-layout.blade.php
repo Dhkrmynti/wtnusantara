@@ -36,7 +36,7 @@
 </head>
 <body x-data="{ 
           darkMode: localStorage.getItem('darkMode') === 'true',
-          sidebarOpen: true,
+          sidebarOpen: window.innerWidth > 1024,
           toggleDarkMode() {
               this.darkMode = !this.darkMode;
               localStorage.setItem('darkMode', this.darkMode);
@@ -58,10 +58,22 @@
     <div class="flex min-h-screen">
         <x-sidebar />
 
-        <div class="flex-1 flex flex-col transition-all duration-300" :class="{ 'ml-64': sidebarOpen, 'ml-0': !sidebarOpen }">
+        <!-- Backdrop for Mobile -->
+        <div x-show="sidebarOpen" 
+             @click="sidebarOpen = false" 
+             class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-40 lg:hidden transition-opacity"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0">
+        </div>
+
+        <div class="flex-1 flex flex-col transition-all duration-300 min-w-0" :class="{ 'lg:ml-64': sidebarOpen, 'ml-0': !sidebarOpen }">
             <x-topbar />
 
-            <main class="p-6">
+            <main class="p-4 md:p-6">
                 {{ $slot }}
             </main>
         </div>

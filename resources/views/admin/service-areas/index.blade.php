@@ -2,7 +2,10 @@
     @push('styles')
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <style>
-        #area-map { height: 500px; border-radius: 24px; z-index: 10; cursor: crosshair; }
+        #area-map { height: 350px; border-radius: 24px; z-index: 10; cursor: crosshair; }
+        @media (min-width: 1024px) {
+            #area-map { height: 500px; }
+        }
         .map-card { position: relative; overflow: hidden; }
         .map-overlay-info {
             position: absolute;
@@ -61,7 +64,7 @@
                 <div id="area-map"></div>
             </div>
 
-            <div class="bg-surface border border-outline-variant/30 rounded-[32px] shadow-sm overflow-hidden flex flex-col h-[500px]">
+            <div class="bg-surface border border-outline-variant/30 rounded-[32px] shadow-sm overflow-hidden flex flex-col h-[350px] lg:h-[500px]">
                 <div class="p-6 border-b border-outline-variant/20 bg-surface-container-low">
                     <h3 class="font-black text-sm uppercase tracking-[0.2em] text-secondary">Daftar Wilayah</h3>
                 </div>
