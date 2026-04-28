@@ -1,0 +1,271 @@
+@import "tailwindcss";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source "../**/*.blade.php";
+@source "../**/*.js";
+@source "../**/*.vue";
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display: 'Inter', sans-serif;
+
+    /* Custom Color Palette from AdminOS */
+    --color-primary: #0058be;
+    --color-on-primary: #ffffff;
+    --color-primary-container: #2170e4;
+    --color-on-primary-container: #fefcff;
+
+    --color-secondary: #545f73;
+    --color-on-secondary: #ffffff;
+    --color-secondary-container: #d5e0f8;
+    --color-on-secondary-container: #586377;
+
+    --color-tertiary: #924700;
+    --color-on-tertiary: #ffffff;
+    --color-tertiary-container: #b75b00;
+    --color-on-tertiary-container: #fffbff;
+
+    --color-error: #ba1a1a;
+    --color-on-error: #ffffff;
+    --color-error-container: #ffdad6;
+    --color-on-error-container: #93000a;
+
+    --color-background: #f8f9ff;
+    --color-on-background: #0b1c30;
+    --color-surface: #f8f9ff;
+    --color-on-surface: #0b1c30;
+
+    --color-surface-variant: #d3e4fe;
+    --color-on-surface-variant: #424754;
+    --color-outline: #727785;
+    --color-outline-variant: #c2c6d6;
+
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-low: #eff4ff;
+    --color-surface-container: #e5eeff;
+    --color-surface-container-high: #dce9ff;
+    --color-surface-container-highest: #d3e4fe;
+
+    --radius-full: 0.75rem;
+    --radius-xl: 0.5rem;
+    --radius-lg: 0.25rem;
+}
+
+/* Explicitly override the built-in dark variant to ONLY target the .dark class */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+    [x-cloak] {
+        display: none !important;
+    }
+
+    :root {
+        color-scheme: light;
+    }
+
+    .dark {
+        color-scheme: dark;
+
+        /* Forced Theme Variable Overrides for Dark Mode */
+        --color-background: #0b1c30;
+        --color-on-background: #f8f9ff;
+        --color-surface: #0b1c30;
+        --color-on-surface: #f8f9ff;
+
+        --color-surface-variant: #424754;
+        --color-on-surface-variant: #d3e4fe;
+        --color-outline: #8c919f;
+        --color-outline-variant: #424754;
+
+        --color-surface-container-lowest: #0b1c30;
+        --color-surface-container-low: #14253a;
+        --color-surface-container: #1e2f44;
+        --color-surface-container-high: #28394e;
+        --color-surface-container-highest: #324358;
+
+        --color-secondary: #adc6ff;
+        --color-on-secondary: #002e69;
+        --color-secondary-container: #284477;
+        --color-on-secondary-container: #d5e0f8;
+
+        --color-tertiary: #ffb4a0;
+        --color-on-tertiary: #5e1700;
+        --color-tertiary-container: #852500;
+        --color-on-tertiary-container: #ffdbd1;
+    }
+
+    html, body {
+        @apply font-sans bg-background text-on-surface antialiased transition-colors duration-300;
+    }
+
+    ::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-outline-variant);
+        border-radius: 20px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-outline);
+    }
+    /* Custom DataTables Styling */
+    .dt-container {
+        padding: 1rem !important;
+        font-size: 0.875rem !important;
+        overflow: visible !important; /* Ensure dropdowns are not clipped */
+    }
+
+    .dt-layout-row {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    @media (min-width: 768px) {
+        .dt-layout-row {
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+        }
+    }
+
+    .dt-layout-cell {
+        margin-bottom: 1rem;
+    }
+
+    .dt-search input {
+        padding: 0.5rem 1rem 0.5rem 2.25rem !important;
+        background-color: var(--color-surface-container-low) !important;
+        border: 1px solid #c2c6d6 !important; /* Solid color for reliability */
+        border-radius: 0.75rem !important;
+        font-weight: 500 !important;
+        font-size: 0.875rem !important;
+        color: var(--color-on-surface) !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23727785' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z' /%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: left 0.75rem center !important;
+        background-size: 1rem !important;
+        outline: none !important;
+        transition: all 0.2s !important;
+    }
+
+    .dt-search input:focus {
+        border-color: var(--color-primary) !important;
+        box-shadow: 0 0 0 4px rgba(0, 88, 190, 0.1) !important;
+    }
+
+    .dt-length select {
+        padding: 0.375rem 0.75rem !important;
+        background-color: var(--color-surface-container-low) !important;
+        border: 1px solid #c2c6d6 !important;
+        border-radius: 0.5rem !important;
+        font-size: 0.75rem !important;
+        font-weight: 700 !important;
+        color: var(--color-secondary) !important;
+        outline: none !important;
+    }
+
+    .dt-paging {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 0.25rem !important;
+        margin-top: 1rem !important;
+    }
+
+    .dt-paging-button {
+        padding: 0.375rem 0.75rem !important;
+        border-radius: 0.5rem !important;
+        font-size: 0.75rem !important;
+        font-weight: 900 !important;
+        color: var(--color-secondary) !important;
+        cursor: pointer !important;
+        border: none !important;
+        background: transparent !important;
+        transition: all 0.2s !important;
+    }
+
+    .dt-paging-button:hover:not(.disabled):not(.current) {
+        background-color: rgba(0, 88, 190, 0.1) !important;
+        color: var(--color-primary) !important;
+    }
+
+    .dt-paging-button.current {
+        background-color: var(--color-primary) !important;
+        color: #ffffff !important;
+        box-shadow: 0 10px 15px -3px rgba(0, 88, 190, 0.2) !important;
+    }
+
+    .dt-paging-button.disabled {
+        opacity: 0.3 !important;
+        cursor: not-allowed !important;
+    }
+
+    .dt-info {
+        font-size: 0.6875rem !important;
+        font-weight: 700 !important;
+        color: var(--color-secondary) !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        margin-top: 1rem !important;
+    }
+
+    table.dataTable {
+        border-collapse: separate !important; /* Use separate for border-radius on table to work better with cell borders */
+        border-spacing: 0 !important;
+        width: 100% !important;
+        border: 1px solid #c2c6d6 !important;
+        border-radius: 0.75rem !important;
+        overflow: visible !important;
+    }
+
+    table.dataTable thead th {
+        border-bottom: 2px solid #c2c6d6 !important;
+        border-right: 1px solid #c2c6d6 !important;
+        background-color: var(--color-surface-container-low) !important;
+    }
+
+    table.dataTable tbody td {
+        border-bottom: 1px solid #e5e7eb !important; /* Lighter border for rows */
+        border-right: 1px solid #c2c6d6 !important;
+    }
+
+    table.dataTable thead th,
+    table.dataTable tbody td {
+        padding: 0.3rem 1rem !important; /* py-2 equivalent - very compact */
+    }
+
+    table.dataTable thead th:last-child,
+    table.dataTable tbody td:last-child {
+        border-right: none !important;
+    }
+
+    table.dataTable.no-footer {
+        border-bottom: 1px solid #c2c6d6 !important;
+    }
+
+    /* Alignment Overrides */
+    table.dataTable .text-center, 
+    table.dataTable th.text-center,
+    table.dataTable td.text-center {
+        text-align: center !important;
+    }
+
+    table.dataTable .text-left,
+    table.dataTable th.text-left,
+    table.dataTable td.text-left {
+        text-align: left !important;
+    }
+
+    /* Prevent DataTables 2.0 from forcing right alignment on numeric data */
+    table.dataTable th.dt-type-numeric,
+    table.dataTable td.dt-type-numeric {
+        text-align: inherit !important;
+    }
+}
